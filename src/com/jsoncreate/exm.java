@@ -72,8 +72,8 @@ public class exm {
 		JSONArray jsonarr2 = new JSONArray();
 		while (rs.next()) {
 			int assign = 0;
-			JSONObject temp = new JSONObject();
-
+			//JSONObject temp = new JSONObject();
+LinkedHashMap<String, Object> temp = new LinkedHashMap<String, Object>();
 			for (int i = 1; i <= rscount; i++) {
 				temp.put(String.valueOf(assign), rs.getObject(i));
 				assign++;
@@ -120,8 +120,12 @@ public class exm {
 			Set<String> keys = doc2.keySet();
 			String val ="";
 			//List<String> val = new ArrayList<String>();
-			for(String keyset : keys)
-				val +=doc2.get(keyset)+",";
+				 ArrayList<Integer> set=new ArrayList<Integer>();  
+			 for(String s: keys)
+				 set.add(Integer.parseInt(s));
+			Collections.sort(set);
+			for(int keyset : set)
+				val +=doc2.get(String.valueOf(keyset))+",";
 			//	val.add(doc2.get(keyset).toString());
 			//	String[] str = val.split(",");
 			// val = val.substring(0, val.length()-1);
